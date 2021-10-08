@@ -1,0 +1,11 @@
+# splunk TA - TA-SRG_Custom-Logo-and-Favicon
+# metadata/local.meta
+# (c) 2020 SwissTXT Security
+#########################################
+# ------------------------------------- #
+# SRG specific TA for default frontend  #
+# Logos and Favicons.                   #
+# ------------------------------------- #
+# Declare local app permissions         #
+#########################################
+
