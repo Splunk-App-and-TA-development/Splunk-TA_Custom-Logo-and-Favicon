@@ -1,68 +1,108 @@
 # splunk TA for Custom Logo and Favicon
-
 Technical add-on to provide custom Logos and Favicons for the Search Heads Frontend pages and Logo for Reports.
+This technical addon can then be installed to all your Splunk Servers to have a standartisized setup.
 
 ## Installation and configuration
-Underhalf the Git repo you'll find two main folders that you need to upload to `/opt/splunk/etc/apps/`.
-After the installation of booth folders in `/opt/splunk/etc/apps/` restart the Splunk daemon to make it run.
+1. Download the TA from splunkbase.com or Github.
 
-1. Create an new index in your environment: `index = splunk_confchange`
+2. Install the TA **Splunk-TA_Custom-Logo-and-Favicon** to `/opt/splunk/etc/apps/` on one of your Search Heads.
+_After the installation you need to adapt some settings before restart Splunk._
 
-2. Upload the App **STXT-App_Confversion** to `/opt/splunk/etc/apps/`.
-_App with the views of the Configuration Changes on your Splunk Servers._
+3. Upload your dedicated **favicon.ico** in to `appserver/static/customfavicon`.
+_There are a lot of online possibilities to create your own favicon. For example: https://www.favicongenerator.com/._
 
-3. Upload the TA  **TA-SRG_Confversion** `/opt/splunk/etc/apps/`.
-_TA with the extractions and parsings of the Configuration Changes on your Splunk Servers._
+4. Edit the custom background image **background-splunk-generic-company-logo_1920x1200.png** stored in `appserver\static\logincustombg` and change it according to your Company logo, etc...
+	- Upload the new background image file back to the `appserver\static\logincustombg` folder.
+	- Depending on your standard screen resolution you may need to change the image size (eg. 1920x1200 or 1024x640, etc ...)
+	- The fastest way to edit the graphics it is by using paint.net. Download it under https://www.getpaint.net/download.html
+	
+5. Edit the custom background image **splunk-company-logo-red.png** stored in `appserver\static\logincustomlogo` and change it according to your Company logo, etc...
+	- Upload the new Loginpage Logo file back to the `appserver\static\logincustomlogo` folder.
+	- The fastest way to edit the graphics it is by using paint.net. Download it under https://www.getpaint.net/download.html
 
-4. Restart your Splunk Server: `/opt/splunk/bin/splunk restart`
+6. Edit the custom background image **logo-standard.png** stored in `appserver\static\logincustompdf` and change it according to your Company logo, etc...
+	- Upload the new PDF Logo image file back to the `appserver\static\logincustompdf` folder.
+	- The fastest way to edit the graphics it is by using paint.net. Download it under https://www.getpaint.net/download.html
 
-### Splunk Components
+7. Restart your Splunk Server: `/opt/splunk/bin/splunk restart`
 
-The **TA-SRG_Confversion** can be installed on all Splunk components including Universal Forwarders. This TA should be installed and configured on all components where configuration change tracking is desired.
+### Components of the TA
+The TA should be configured with the following configuration files:
+- `alert_actions.conf`
+- `web.conf`
 
-The **TA-SRG_Confversion** must be installed on Indexers and intermediate HFs, as it contains index-time transforms. 
+Logos and Graphics stored in `appserver/static` folder
+- Dedicated Favicon
+- Login page Background image
+- Login page company Logo
+- PDF Company logo 
 
-The **TA-SRG_Confversion** must be installed on Search Heads, as it comes bundled with important KOs for viewing the indexed configuration data. 
-
-The **STXT-App_Confversion** should be installed on your DMC Console of the Splunk Search Head where the DMC Console is installed to see all Changes on all your servers.
 
 ### Configuration
+
+#### Login Page configuration
 
 > Note: The app in this repo comes pre-configured with files in `local/`. The version on SplunkBase **is not preconfigured**, and requires the following manual steps.  
 You can use local/*.conf files in this repo as templates to cofngiure the app in your environment.
 
-Create an index (local/indexes.conf) if you do not wish to ingest these logs into main. (recommended)
-
-Create local/macros.conf and override the `conf_files_index` to point at the index you chose in the step above. 
-
-Create local/inputs.conf to designate the index and enable the inputs. 
-
-#### File change monitor polling interval
-
-By default, Splunk logs changes in the `$SPLUNK_HOME/etc/` directory every 10 minutes. In some cases, it may be desirable to do this more frequently, to ensure that no filechanges are missed. If this is desired, add the following to local/inputs.conf:
 ```conf
-[fschange:$SPLUNK_HOME/etc]
-#poll every 30 seconds
-pollPeriod = 30
+[settings]
+### Customization Frontend Graphs
+loginBackgroundImageOption = custom
+loginCustomBackgroundImage = Splunk-TA_Custom-Logo-and-Favicon:logincustombg/background-splunk-generic-company-logo_1920x1200.png
+
+### Customization Frontend Logo
+loginCustomLogo = Splunk-TA_Custom-Logo-and-Favicon:logincustomlogo/splunk-company-powered-logo-red.png
+
+### Customization Frontend Favicons
+customFavicon = Splunk-TA_Custom-Logo-and-Favicon:customfavicon/favicon.ico
 ```
 
-This change can cause added load on the system. Ensure you are comfortable with that before implementing this change. 
+#### PDF Page configuration
 
-### Security
+By default, Splunk logs changes in the `$SPLUNK_HOME/etc/` directory every 10 minutes. In some cases, it may be desirable to do this more frequently, to ensure that no filechanges are missed. If this is desired, add the following to local/inputs.conf:
 
-This TA exposes potentially sensitive information to users. This includes any passwords/tokens/usernames contained within conf files on the instance. 
+```conf
+### PDF Logo Settings
+pdf.logo_path = Splunk-TA_Custom-Logo-and-Favicon:logincustompdf/logo-standard.png
 
-It is highly recommended that the index this TA uses be made accessible soley to administrators to prevent information disclousre to unauthorised parties. 
+### PDF Mailsender Settings
+from = <your-team-email-address>
+mailserver = <your-smtprelay-server>
+use_tls = 1
 
-### Configuration Files Contained Within the Add-on
-- app.conf
-- indexes.conf
-- inputs.conf
-- props.conf
-- transforms.conf
+### PDF Disclamer Settings
+footer.text = -<< <your-company-name> Enterprise Security SIEM Disclamer >>-\
+\
+Please, DO NOT REPLY !\
+ \
+As SIEM operators, we take the protection of personal information seriously.\
+We treat personal information as confidential and will handle it in accordance with data protection legislation as well as with the terms of this statement.\
+\
+Any files/attachments transmitted with this eMail are strictly confidential and are intended solely for the use of the individual or entity to whom they are addressed.\
+\
+If this message has been sent to you in error, you must not copy, distribute or disclose of the information it contains.\
+Please notify the <your-company-team-name> Team immediately and delete the message from your system.\
+\
+Thank you for your understanding.\
+For any questions, please contact us at <your-team-email-address>\
+\
+Kind Regards \
+<your-company-team-name> Team\
+\
++-+-+-+-+-+-+-+-+-+-+-+-+\
+<your-company-name>\
+<your-company-address>\
+<your-company-po-box> <your-company-city>\
+Phone <your-company-phone>\
+<your-team-email-address>\
+<your-company-web-url>\
++-+-+-+-+-+-+-+-+-+-+-+-+
+```
 
 
-
+### Deploy to other servers
+Once you defined a standard for your Frontend page and PDF printout, you can save the TA and install it on all your other servers.
 
 ## Who is this app for?
 This app is for anyone who wants to display several metrics on a small area of a dashboard.
@@ -80,8 +120,8 @@ Please track issues here, on Github. Merge requests are welcome, but may not be 
 -Initial version
 
 # Support
-
-Support will be provided by the developers on a best-effort basis. The developers make no commitment to continued development. The software is provided as is, and the developer accepts no responsibility for any issues with the software, or which may result as a consequence of using the software to the fullest extent permissible by the law.
+Support will be provided by the developers on a best-effort basis. The developers make no commitment to continued development.<br>
+The software is provided as is, and the developer accepts no responsibility for any issues with the software, or which may result as a consequence of using the software to the fullest extent permissible by the law.
 
 Please find the license for this software here: https://github.com/Splunk-App-and-TA-development/Splunk-TA_Custom-Logo-and-Favicon/master/LICENSE
 
