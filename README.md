@@ -102,41 +102,58 @@ Phone <your-company-phone>\
 
 
 ### Deploy to other servers
-Once you defined a standard for your Frontend page and PDF printout, you can save the TA and install it on all your other servers.
+Once you defined a standard for your Frontend page and PDF printout, you can save the TA locally to your client and install it on all your other servers.
+If you manage your servers via a deployment server, then deploy the TA via it.
 
 ## Who is this app for?
-This app is for anyone who wants to display several metrics on a small area of a dashboard.
+This TA is used to provide a standartisised Login page as well as standartisised PDF template and Mail footer.
 
 ## How does the app work?
-This app provides a visualization that you can use in your own apps and dashboards.
+This ta provides configuration standards and graphics for the Login page, PDF template and Mail template. 
 
-To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.
+## **Release Notes**
+
+#### v 1.0.1
+- Added generic graphics for the initial installation
+- Updated Manuals to explain how to adapt the graphics and configuration files
+
+#### v 1.0.0
+-Initial Versionsion
 
 
-## Development
-Please track issues here, on Github. Merge requests are welcome, but may not be addressed immediately. 
+## **Support**
+Support is not guaranteed and will be provided on a best effort basis.
+Please use Github to open issues or feature requests:
+- **https://github.com/Splunk-App-and-TA-development/Splunk-TA_Custom-Logo-and-Favicon/issues**
 
-### v 1.0.0
--Initial version
 
-# Support
-Support will be provided by the developers on a best-effort basis. The developers make no commitment to continued development.<br>
-The software is provided as is, and the developer accepts no responsibility for any issues with the software, or which may result as a consequence of using the software to the fullest extent permissible by the law.
+#### Splunk Version Support
 
+| Supported Splunk Versions  | Unsupported or Deprecated  |
+| --- | --- |
+|  8.2.x, 8.1.x, 8.0.x, 7.3.9, 7.3.6 | 7.3.5 and lower, 6.6.x, 6.5.x, 6.4, 6.3, 6.2, older  |
+
+
+#### Credits
+This app is supported by Patrick Vanreck (SwissTXT). Contact us under: **[yoyonet-info@gmx.net](mailto:yoyonet-info@gmx.net)**.
+
+- Find us under **[SECLAB Splunk App & TA Development](https://github.com/Splunk-App-and-TA-development "SECLAB Splunk App & TA Development")**
+- Send questions to ***[yoyonet-info@gmx.net](mailto:yoyonet-info@gmx.net)***
+- Developped by **Patrick Vanreck**
+
+
+#### Software License
 Please find the license for this software here: https://github.com/Splunk-App-and-TA-development/Splunk-TA_Custom-Logo-and-Favicon/master/LICENSE
 
 
-## Issues and Limitations
-No kown limitations for the Use on Splunk Servers.
+#### Copyrights
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),<br>
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,<br>
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+	
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-### Splunk Version Support
-8.2.x, 8.1.x. 8.0.x, 7.x, 6.x
 
-
-## Privacy and Legal
-No personally identifiable information is logged or obtained in any way through this visualizaton.
-
-## For support
-Send email to yoyonet-info@gmx.net
-
-Support is not guaranteed and will be provided on a best effort basis.
+<div class="footer">
+    Copyright &copy; 2017-2021 by SwissTXT Security
+</div>
