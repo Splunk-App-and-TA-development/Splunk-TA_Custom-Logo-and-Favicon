@@ -56,6 +56,17 @@ loginCustomLogo = Splunk-TA_Custom-Logo-and-Favicon:logincustomlogo/splunk-compa
 
 ### Customization Frontend Favicons
 customFavicon = Splunk-TA_Custom-Logo-and-Favicon:customfavicon/favicon.ico
+
+### Custom Footer for Embeded PDF
+embed_footer = <div class="footer"; align="center">Copyright <b>&copy;</b> 2017-2021 by YOUR COMPANY - all rights reserved.<br>Find us under <a href="https://WWW-YOUR-COMPANY.COM"><img src="/static/app/TA-SRG_Custom-Logo-and-Favicon/company-logo/company-logo.png" title="https://WWW-YOUR-COMPANY.COM" width="49" height="17"/></a></div>
+
+### Custom Login Page Footer
+loginFooterOption = custom
+loginFooterText = <div class="footer"; align="center">Copyright <b>&copy;</b> 2017-2021 by YOUR COMPANY - all rights reserved.<br>Find us under <a href="https://WWW-YOUR-COMPANY.COM"><img src="/static/app/TA-SRG_Custom-Logo-and-Favicon/company-logo/company-logo.png" title="https://WWW-YOUR-COMPANY.COM" width="49" height="17"/></a></div>
+
+## Page Title Option
+loginDocumentTitleOption = custom
+loginDocumentTitleText = <YOUR-COMPANY> Security Splunk
 ```
 
 #### PDF Page configuration
