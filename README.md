@@ -5,7 +5,7 @@ This technical addon can then be installed to all your Splunk Servers to have a 
 ## Installation and configuration
 1. Download the TA from splunkbase.com or Github.
 
-2. Install the TA **Splunk-TA_Custom-Logo-and-Favicon** to `/opt/splunk/etc/apps/` on one of your Search Heads.
+2. Install the TA **TA_Custom-Logo-and-Favicon** to `/opt/splunk/etc/apps/` on one of your Search Heads.
 _After the installation you need to adapt some settings before restart Splunk._
 
 3. Upload your dedicated **favicon.ico** in to `appserver/static/customfavicon`.
@@ -75,7 +75,7 @@ By default, Splunk logs changes in the `$SPLUNK_HOME/etc/` directory every 10 mi
 
 ```conf
 ### PDF Logo Settings
-pdf.logo_path = Splunk-TA_Custom-Logo-and-Favicon:logincustompdf/logo-standard.png
+pdf.logo_path = TA_Custom-Logo-and-Favicon:logincustompdf/logo-standard.png
 
 ### PDF Mailsender Settings
 from = <your-team-email-address>
@@ -135,7 +135,7 @@ This ta provides configuration standards and graphics for the Login page, PDF te
 ## **Support**
 Support is not guaranteed and will be provided on a best effort basis.
 Please use Github to open issues or feature requests:
-- **https://github.com/Splunk-App-and-TA-development/Splunk-TA_Custom-Logo-and-Favicon/issues**
+- **https://github.com/Splunk-App-and-TA-development/TA_Custom-Logo-and-Favicon/issues**
 
 
 #### Splunk Version Support
@@ -154,7 +154,7 @@ This app is supported by Patrick Vanreck (SwissTXT). Contact us under: **[yoyone
 
 
 #### Software License
-Please find the license for this software here: https://github.com/Splunk-App-and-TA-development/Splunk-TA_Custom-Logo-and-Favicon/master/LICENSE
+Please find the license for this software here: https://github.com/Splunk-App-and-TA-development/TA_Custom-Logo-and-Favicon/master/LICENSE
 
 
 #### Copyrights
