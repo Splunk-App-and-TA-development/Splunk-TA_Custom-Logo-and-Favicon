@@ -41,47 +41,94 @@ Logos and Graphics stored in `appserver/static` folder
 ### Configuration
 
 #### Login Page configuration
-
 > Note: The app in this repo comes pre-configured with files in `local/`. The version on SplunkBase **is not preconfigured**, and requires the following manual steps.  
 You can use local/*.conf files in this repo as templates to cofngiure the app in your environment.
 
+##### Login Page background
+Customizes the login page background image. A landscape image is recommended, with a minimum resolution of **1024x640**.<br>
+Supported image files include **.jpg**, **.jpeg** or **.png** with a maximum file size of **20MB**.<br>
+Change only the file `background-splunk-generic-company-logo_1920x1200.png` if you want to have another background image in your login page.
 ```conf
 [settings]
 ### Customization Frontend Graphs
 loginBackgroundImageOption = custom
-loginCustomBackgroundImage = Splunk-TA_Custom-Logo-and-Favicon:logincustombg/background-splunk-generic-company-logo_1920x1200.png
+loginCustomBackgroundImage = TA_Custom-Logo-and-Favicon:logincustombg/background-splunk-generic-company-logo_1920x1200.png
+```
 
+##### Login Page Logo
+Customizes the logo image on the login page. Image file, such as **.jpg** or **.png.** All image formats are supported. The maximum image size is **485px wide** and **100px high**. Will be automatically resized if exceeds these limits.<br>
+Change only the file `splunk-company-powered-logo-red.png` if you want to have another logo in your login page.
+```conf
 ### Customization Frontend Logo
-loginCustomLogo = Splunk-TA_Custom-Logo-and-Favicon:logincustomlogo/splunk-company-powered-logo-red.png
+loginCustomLogo = TA_Custom-Logo-and-Favicon:logincustomlogo/splunk-company-powered-logo-red.png
+```
 
+##### Login Page Favicon
+Customizes the favicon image across the entire application. Supported favicon image files are **.ico** files, and should be square images.<br>
+Change only the file `favicon.ico` if you want to have another favicon in your login page. The favicon remains after a login into Splunk.
+```conf
 ### Customization Frontend Favicons
-customFavicon = Splunk-TA_Custom-Logo-and-Favicon:customfavicon/favicon.ico
+customFavicon = TA_Custom-Logo-and-Favicon:customfavicon/favicon.ico
+```
 
+##### Login Page Content
+Lets you add custom content to the login page. Supports any text including HTML.
+```conf
+## Dedicated Login Content 
+login_content = <br><font color=white size=3 face=arial><b><YOUR COMPANY> Splunk Search Enterprise</b></font><br><font size=2>Put here some slogans or important informations.</a></font><br><br><font color=red size=2 face=arial><b>Authorized Access Only!</b></font>
+```
+
+##### Footer for Embedded Reports
+A block of HTML code that defines the footer for an embedded report. Any valid HTML code is acceptable.
+```conf
 ### Custom Footer for Embeded PDF
 embed_footer = <div class="footer"; align="center">Copyright <b>&copy;</b> 2017-2021 by YOUR COMPANY - all rights reserved.<br>Find us under <a href="https://WWW-YOUR-COMPANY.COM"><img src="/static/app/TA-SRG_Custom-Logo-and-Favicon/company-logo/company-logo.png" title="https://WWW-YOUR-COMPANY.COM" width="49" height="17"/></a></div>
+```
 
+##### Login Page Footer
+The text to display in the footer of the login page. Supports any text, including HTML.
+```conf
 ### Custom Login Page Footer
 loginFooterOption = custom
 loginFooterText = <div class="footer"; align="center">Copyright <b>&copy;</b> 2017-2021 by YOUR COMPANY - all rights reserved.<br>Find us under <a href="https://WWW-YOUR-COMPANY.COM"><img src="/static/app/TA-SRG_Custom-Logo-and-Favicon/company-logo/company-logo.png" title="https://WWW-YOUR-COMPANY.COM" width="49" height="17"/></a></div>
+```
 
+##### Login Page Title
+The text to display in the document title of the login page. Use Text only.
+```conf
 ## Page Title Option
 loginDocumentTitleOption = custom
 loginDocumentTitleText = <YOUR-COMPANY> Security Splunk
 ```
 
-#### PDF Page configuration
+![Login Page example](TA_Custom-Logo-and-Favicon/appserver/static/README/custom-logo-and-favicon-frontend.png?raw=Login Page example")
 
-By default, Splunk logs changes in the `$SPLUNK_HOME/etc/` directory every 10 minutes. In some cases, it may be desirable to do this more frequently, to ensure that no filechanges are missed. If this is desired, add the following to local/inputs.conf:
+![Login Page example]($SPLUNK_HOME/etc/apps/TA_Custom-Logo-and-Favicon/appserver/static/README/custom-logo-and-favicon-frontend.png?raw=Login Page example")
 
+#### PDF Page and Mail configuration
+> Note: The app in this repo comes pre-configured with files in `local/`. The version on SplunkBase **is not preconfigured**, and requires the following manual steps.  
+You can use local/*.conf files in this repo as templates to cofngiure the app in your environment.
+
+##### PDF Page logo
 ```conf
 ### PDF Logo Settings
 pdf.logo_path = TA_Custom-Logo-and-Favicon:logincustompdf/logo-standard.png
+```
 
+##### Email SMTP Relay settings
+You must have a Simple Mail Transfer Protocol (SMTP) server available to send email. This is not included with the Splunk instance.
+Specify both <host> and <port> (eg. `mailserver = <host>[:<port>]`).
+```conf
 ### PDF Mailsender Settings
 from = <your-team-email-address>
 mailserver = <your-smtprelay-server>
+auth_username = <your-snmtp-user-name>
+mailserver = <your-smtp-user-password>
 use_tls = 1
+```
 
+##### Email Footer
+```conf
 ### PDF Disclamer Settings
 footer.text = -<< <your-company-name> Enterprise Security SIEM Disclamer >>-\
 \
@@ -111,6 +158,13 @@ Phone <your-company-phone>\
 +-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
+![PDF Page example](TA_Custom-Logo-and-Favicon/appserver/static/README/custom-logo-and-favicon-pdf-logo.png?raw=PDF Page example")
+
+![PDF Page example]($SPLUNK_HOME/etc/apps/TA_Custom-Logo-and-Favicon/appserver/static/README/custom-logo-and-favicon-pdf-logo.png?raw=PDF Page example")
+
+### Adapt scanning time
+By default, Splunk logs changes in the `$SPLUNK_HOME/etc/` directory every 10 minutes.
+In some cases, it may be desirable to do this more frequently, to ensure that no filechanges are missed. If this is desired, add the following to `local/inputs.conf`:
 
 ### Deploy to other servers
 Once you defined a standard for your Frontend page and PDF printout, you can save the TA locally to your client and install it on all your other servers.
