@@ -101,9 +101,6 @@ loginDocumentTitleOption = custom
 loginDocumentTitleText = <YOUR-COMPANY> Security Splunk
 ```
 
-![Login Page example](https://github.com/Splunk-App-and-TA-development/TA_Custom-Logo-and-Favicon/blob/main/appserver/static/README/custom-logo-and-favicon-frontend.png)
-
-![Login Page example]($SPLUNK_HOME/etc/apps/TA_Custom-Logo-and-Favicon/appserver/static/README/custom-logo-and-favicon-frontend.png?raw=Login Page example")
 
 #### PDF Page and Mail configuration
 > Note: The app in this repo comes pre-configured with files in `local/`. The version on SplunkBase **is not preconfigured**, and requires the following manual steps.  
@@ -158,9 +155,22 @@ Phone <your-company-phone>\
 +-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
+
+#### Examples Login Page and PDF Export
+1. Login Page Title
+2. Login Page Logo
+3. Login Page Content
+4. Login Page Footer
+5. PDF Page logo
+
+##### Login Page example
+![Login Page example](https://github.com/Splunk-App-and-TA-development/TA_Custom-Logo-and-Favicon/blob/main/appserver/static/README/custom-logo-and-favicon-frontend.png)
+
+
+##### PDF Page example
 ![PDF Page example](https://github.com/Splunk-App-and-TA-development/TA_Custom-Logo-and-Favicon/blob/main/appserver/static/README/custom-logo-and-favicon-pdf-logo.png)
 
-![PDF Page example]($SPLUNK_HOME/etc/apps/TA_Custom-Logo-and-Favicon/appserver/static/README/custom-logo-and-favicon-pdf-logo.png?raw=PDF Page example")
+
 
 ### Adapt scanning time
 By default, Splunk logs changes in the `$SPLUNK_HOME/etc/` directory every 10 minutes.
