@@ -101,7 +101,7 @@ loginDocumentTitleOption = custom
 loginDocumentTitleText = <YOUR-COMPANY> Security Splunk
 ```
 
-![Login Page example](TA_Custom-Logo-and-Favicon/appserver/static/README/custom-logo-and-favicon-frontend.png?raw=Login Page example")
+![Login Page example](https://github.com/Splunk-App-and-TA-development/TA_Custom-Logo-and-Favicon/blob/main/appserver/static/README/custom-logo-and-favicon-frontend.png)
 
 ![Login Page example]($SPLUNK_HOME/etc/apps/TA_Custom-Logo-and-Favicon/appserver/static/README/custom-logo-and-favicon-frontend.png?raw=Login Page example")
 
@@ -158,7 +158,7 @@ Phone <your-company-phone>\
 +-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-![PDF Page example](appserver/static/README/custom-logo-and-favicon-pdf-logo.png?raw=PDF Page example")
+![PDF Page example](https://github.com/Splunk-App-and-TA-development/TA_Custom-Logo-and-Favicon/blob/main/appserver/static/README/custom-logo-and-favicon-pdf-logo.png)
 
 ![PDF Page example]($SPLUNK_HOME/etc/apps/TA_Custom-Logo-and-Favicon/appserver/static/README/custom-logo-and-favicon-pdf-logo.png?raw=PDF Page example")
 
